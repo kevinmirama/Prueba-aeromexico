@@ -1,26 +1,51 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: #5fd768;
+  --dark-bg: #0b0b0b;
+  --card-bg: #1c1c1c;
+  --card-footer: #2c2c2c;
+  --text-light: #ffffff;
+  --text-grey: #a0a0a0;
+  --status-alive: #5fd768;
+  --status-dead: #ff3838;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Ocultar barra de desplazamiento para Chrome, Safari y Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Para Internet Explorer y Edge */
+body {
+  -ms-overflow-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    color-scheme: dark;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

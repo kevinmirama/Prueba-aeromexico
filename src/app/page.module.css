@@ -1,0 +1,714 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0;
+  background-color: #0b0b0b;
+  color: #f5f5f5;
+  position: relative;
+  background-image: url('/fondofinal.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  overflow: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.main::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.main:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -440px;
+  width: 600px;
+  height: 800px;
+  background-image: url('/final personajes.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  z-index: 1;
+  transform: scale(2.5);
+  transform-origin: bottom left;
+}
+
+/* 
+  NOTA: Para agregar los personajes de Rick y Morty al lado izquierdo:
+  1. Necesitas subir una imagen de Rick y Morty (tipo silueta) a la carpeta public
+  2. Luego descomenta el siguiente código y actualiza la ruta de la imagen
+*/
+
+.logoContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  transform: translateX(0);
+}
+
+.logo {
+  max-width: 250px;
+  height: auto;
+}
+
+.contentContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  padding-top: 4rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 50px auto 0;
+  position: relative;
+}
+
+.contentContainer:before {
+  display: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.mainContent {
+  display: flex;
+  flex: 1;
+  gap: 0px;
+  min-height: 620px;
+  position: relative;
+  margin: 0;
+  margin-left: 50px;
+  justify-content: flex-start;
+  width: 960px;
+  max-width: 100%;
+  margin-bottom: -50px;
+  z-index: 5;
+}
+
+/* Panel izquierdo - Personaje seleccionado */
+.selectedCharacterPanel {
+  flex: 0 0 480px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px 0 0 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 722px;
+  height: 722px;
+  width: 480px;
+  max-width: 480px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.liveIndicator {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.live, .dead {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.live {
+  background-color: #5fd768;
+  color: #000;
+}
+
+.dead {
+  background-color: #ff3838;
+  color: #fff;
+}
+
+.characterImageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.selectedCharacterImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.9;
+}
+
+.characterInfo {
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 0;
+  z-index: 1;
+}
+
+.characterName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  padding: 0 1rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.characterDetails {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.characterAttributes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  height: 120px;
+}
+
+.attributeItem {
+  flex: 1;
+  text-align: center;
+  padding: 0.8rem 0;
+  border-right: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.attributeItem:last-child {
+  border-right: none;
+}
+
+.attributeTitle {
+  color: #5fd768;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.attributeValue {
+  font-size: 0.9rem;
+  color: white;
+}
+
+/* Panel derecho - Cuadrícula y búsqueda */
+.rightPanel {
+  flex: 0 0 480px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #202020;
+  padding: 1rem;
+  padding-bottom: 40px;
+  border-radius: 0 10px 10px 0;
+  gap: 15px;
+  width: 480px;
+  max-width: 480px;
+  height: 722px;
+  box-sizing: border-box;
+  margin: 0;
+  z-index: 3;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.rightPanel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.searchContainer {
+  position: relative;
+  width: 70%;
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 250px;
+  padding: 0.75rem 1rem;
+  padding-left: 2.8rem;
+  padding-right: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid #5fd768;
+  background-color: #232323;
+  color: #5fd768;
+  outline: none;
+  font-size: 1.1rem;
+  transition: border-color 0.2s;
+}
+
+.searchInput::placeholder {
+  color: #5fd768;
+  opacity: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 35px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5fd768;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gridContainer {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: min-content;
+  gap: 15px;
+  padding: 10px;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+  max-height: 550px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.gridContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.gridItem {
+  background-color: #222222;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #333;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+  max-height: 220px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+}
+
+.gridItem:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  border-color: #444;
+}
+
+.gridItem:hover::before {
+  content: 'HOVER DE MOUSE';
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #333;
+  padding: 4px;
+  border-radius: 4px;
+  z-index: 100;
+}
+
+.gridItem:hover .gridImage {
+  opacity: 1;
+}
+
+.gridItem:hover .characterName {
+  color: #5fd768;
+}
+
+.gridItem.selected {
+  border: 2px solid #5fd768;
+  box-shadow: 0 0 15px rgba(95, 215, 104, 0.3);
+}
+
+.gridItem .characterName {
+  background-color: #222222;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gridImageContainer {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+}
+
+.liveIndicatorGrid {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 10;
+}
+
+.liveGrid {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #5fd768;
+  color: #000;
+}
+
+.gridImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.gridImageContainer:hover .gridImage {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.likeButton {
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  background-color: #222222;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  gap: 8px;
+  height: 40px;
+}
+
+.likeIcon {
+  color: #ff0000;
+  font-size: 1.3rem;
+}
+
+.likeIconEmpty {
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+.favButtonContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  padding: 10px 0;
+  margin: 0;
+  z-index: 100;
+}
+
+.favsButton {
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.favsButton:hover {
+  background-color: #555;
+}
+
+.favsButton.active {
+  background-color: #5fd768;
+  color: #000;
+}
+
+.loading, .error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5rem;
+}
+
+.noCharacterSelected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Estilo para el pie de página con fondo verde */
+.footer {
+  height: 100px;
+  width: 100%;
+  background-color: #8ACA3D;
+  background-image: linear-gradient(to bottom, #8ACA3D, #5fb92e);
+  position: relative;
+  z-index: 3;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 1200px) {
+  .mainContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .selectedCharacterPanel {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .rightPanel {
+    max-width: 100%;
+  }
+
+  .logoContainer {
+    top: 15px;
+    transform: translateX(0);
+    left: 0;
+    right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileView {
+    flex-direction: column;
+    overflow-x: hidden;
+    width: 100%;
+    padding: 0;
+  }
+
+  .mobileContent {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .logoContainer {
+    padding: 10px 0;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 180px;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .contentContainer {
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .mainContent {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: auto;
+  }
+  
+  .selectedCharacterPanel {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: auto;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+  
+  .characterImageContainer {
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
+  
+  .selectedCharacterImage {
+    width: 100% !important;
+    height: 300px !important;
+    object-fit: cover;
+  }
+  
+  .characterInfo {
+    position: relative;
+    bottom: auto;
+    padding: 10px;
+    background-color: #222;
+  }
+  
+  .characterAttributes {
+    position: relative;
+    height: auto;
+    bottom: auto;
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
+  
+  .attributeItem {
+    width: 50%;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+  
+  .rightPanel {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    padding: 10px;
+    margin: 0;
+    box-shadow: none;
+  }
+  
+  .searchContainer {
+    width: 90%;
+    margin: 10px auto;
+  }
+  
+  .searchInput {
+    max-width: 100%;
+  }
+  
+  .searchIcon {
+    left: 15px;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-height: none;
+    overflow-y: visible;
+    padding: 5px;
+    margin-bottom: 80px;
+  }
+  
+  .gridItem {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+  }
+  
+  .gridImageContainer {
+    width: 100%;
+    height: 140px;
+  }
+  
+  .gridImage {
+    width: 100% !important;
+    height: 140px !important;
+  }
+  
+  .likeButton {
+    width: 100%;
+  }
+  
+  .favButtonContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: auto;
+    background-color: transparent;
+    padding: 0;
+  }
+  
+  .favsButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5fd768;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 0;
+  }
+  
+  .footer {
+    height: 50px;
+  }
+}
