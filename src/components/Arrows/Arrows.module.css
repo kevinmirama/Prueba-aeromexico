@@ -1,0 +1,78 @@
+.arrowContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  font-family: Arial, sans-serif;
+  margin: 5px 0 15px;
+  width: 100%;
+}
+
+.arrowLabel {
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  font-weight: normal;
+  width: 100%;
+  white-space: nowrap;
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+
+.arrowButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: #666;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  padding: 0;
+}
+
+.up, .down {
+  background-color: #666;
+}
+
+.arrow.hover, .arrow:hover {
+  background-color: #8BC34A;
+  color: #333;
+}
+
+.up.hover, .up:hover {
+  background-color: #8BC34A;
+}
+
+.down.hover, .down:hover {
+  background-color: #8BC34A;
+}
+
+.arrow.clicked {
+  background-color: #666;
+  color: #8BC34A;
+}
+
+@media (max-width: 768px) {
+  .arrowContainer {
+    top: 5px;
+    flex-direction: row;
+  }
+  
+  .arrow {
+    width: 30px;
+    height: 30px;
+  }
+} 

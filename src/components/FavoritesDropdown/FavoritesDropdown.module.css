@@ -1,0 +1,168 @@
+.dropdown {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-101%);
+  width: 280px;
+  background-color: #333;
+  border: 2px solid #5fd768;
+  border-radius: 8px 8px 0 8px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.header {
+  background-color: #222;
+  color: #5fd768;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #444;
+  font-size: 16px;
+}
+
+.list {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #444;
+  transition: background-color 0.2s;
+}
+
+.item:hover {
+  background-color: #444;
+}
+
+.characterImage {
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 1px solid #5fd768;
+}
+
+.name {
+  flex: 1;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: #ff5252;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.removeButton:hover {
+  opacity: 1;
+}
+
+.emptyMessage {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+}
+
+/* Estilos para móvil */
+@media (max-width: 768px) {
+  .dropdown {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 60vh;
+    border-radius: 20px 20px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    border-top: 3px solid #5fd768;
+  }
+  
+  .header {
+    padding: 20px 15px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .header::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: #444;
+    border-radius: 2px;
+  }
+  
+  .list {
+    max-height: 50vh;
+    padding-bottom: 20px;
+  }
+  
+  .item {
+    padding: 15px 20px;
+  }
+  
+  .characterImage {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+  
+  .name {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .removeButton {
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+  }
+  
+  .emptyMessage {
+    padding: 30px 20px;
+    font-size: 16px;
+  }
+}
+
+/* Estilos para la barra de desplazamiento */
+.list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: #5fd768;
+  border-radius: 2px;
+}
+
+.list::-webkit-scrollbar-track {
+  background-color: #252525;
+} 
