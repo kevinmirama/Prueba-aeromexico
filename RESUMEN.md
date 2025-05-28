@@ -57,10 +57,10 @@
 
 ## Tecnologías utilizadas
 
-- React 19
+- React 18
 - Next.js
 - TypeScript
 - CSS Modules
 - Redux Toolkit
 - JSON Server
-- Jest y React Testing Library 
+- Jest y React Testing Library

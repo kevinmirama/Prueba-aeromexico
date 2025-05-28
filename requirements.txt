@@ -1,0 +1,29 @@
+# Dependencias principales
+next==14.0.0
+react==18.2.0
+react-dom==18.2.0
+react-redux==9.0.0
+@reduxjs/toolkit==2.0.0
+rickmortyapi==2.3.0
+
+# Dependencias de desarrollo
+jest==29.7.0
+jest-environment-jsdom==29.7.0
+@testing-library/jest-dom==6.6.3
+@testing-library/react==16.3.0
+@types/jest==29.5.14
+@types/node==20.0.0
+@types/react==18.0.0
+@types/react-dom==18.0.0
+eslint==8.0.0
+eslint-config-next==14.0.0
+identity-obj-proxy==3.0.0
+json-server==1.0.0-beta.3
+typescript==5.0.0
+
+# Nota: Este archivo es complementario al package.json
+# Para instalar todas las dependencias, se recomienda usar npm:
+# npm install
+# 
+# Si prefieres usar pip para algunas dependencias específicas:
+# pip install -r requirements.txt

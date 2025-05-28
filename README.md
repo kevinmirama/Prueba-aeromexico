@@ -16,7 +16,7 @@ Una aplicación web interactiva que muestra personajes de Rick and Morty con dis
 
 ## Tecnologías utilizadas
 
-- **Next.js 15**: Framework de React para renderizado del lado del servidor
+- **Next.js 14**: Framework de React para renderizado del lado del servidor
 - **React.js**: Biblioteca para interfaces de usuario
 - **TypeScript**: Tipado estático para mejorar la calidad del código
 - **Redux Toolkit**: Gestión de estado global eficiente
@@ -34,8 +34,8 @@ Una aplicación web interactiva que muestra personajes de Rick and Morty con dis
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/TU-NOMBRE-DE-USUARIO-REAL/prueba-aeromexico.git
-cd prueba-aeromexico
+git clone https://github.com/kevinmirama/Prueba-aeromexico.git
+cd Prueba-aeromexico
 ```
 
 2. Instala las dependencias:
@@ -45,28 +45,55 @@ npm install
 yarn install
 ```
 
-3. Genera los datos de personajes (si el archivo db.json no existe o está vacío):
+Alternativamente, si prefieres usar pip para algunas dependencias específicas:
+```bash
+pip install -r requirements.txt
+```
+
+### Método 1: Configuración automática (recomendado)
+
+Este método configura todo automáticamente en un solo paso:
+
+```bash
+npm run setup
+# o
+yarn setup
+```
+
+Este script realizará automáticamente las siguientes acciones:
+- Verificará si el archivo db.json existe y tiene datos
+- Si es necesario, generará los datos de personajes
+- Iniciará el servidor json-server en segundo plano
+- Iniciará la aplicación Next.js
+
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
+
+### Método 2: Configuración manual (paso a paso)
+
+Si prefieres configurar manualmente o si el método automático no funciona:
+
+1. Genera los datos de personajes (si el archivo db.json no existe o está vacío):
 ```bash
 npm run update-characters
 # o
 yarn update-characters
 ```
 
-4. Inicia el servidor de datos (mantén esta terminal abierta):
+2. Inicia el servidor de datos (mantén esta terminal abierta):
 ```bash
 npm run server
 # o
 yarn server
 ```
 
-5. En otra terminal, inicia la aplicación:
+3. En otra terminal, inicia la aplicación:
 ```bash
 npm run dev
 # o
 yarn dev
 ```
 
-5. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
 
 ## Estructura del proyecto
 
