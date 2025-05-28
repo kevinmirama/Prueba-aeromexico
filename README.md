@@ -34,8 +34,8 @@ Una aplicación web interactiva que muestra personajes de Rick and Morty con dis
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/rick-morty-app.git
-cd rick-morty-app
+git clone https://github.com/TU-NOMBRE-DE-USUARIO-REAL/prueba-aeromexico.git
+cd prueba-aeromexico
 ```
 
 2. Instala las dependencias:
@@ -45,14 +45,21 @@ npm install
 yarn install
 ```
 
-3. Ejecuta el servidor de datos (json-server):
+3. Genera los datos de personajes (si el archivo db.json no existe o está vacío):
+```bash
+npm run update-characters
+# o
+yarn update-characters
+```
+
+4. Inicia el servidor de datos (mantén esta terminal abierta):
 ```bash
 npm run server
 # o
 yarn server
 ```
 
-4. En otra terminal, inicia la aplicación:
+5. En otra terminal, inicia la aplicación:
 ```bash
 npm run dev
 # o

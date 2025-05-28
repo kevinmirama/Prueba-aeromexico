@@ -1,0 +1,7 @@
+Documentación: actualización de estructura de pruebas en README
+Estilos: implementación de CSS Modules y diseño responsive
+Estado global: configuración de Redux para gestión de favoritos
+Integración: merge de componentes y estados
+Componentes: implementación de interfaz y tarjetas de personajes
+Documentación: estructura inicial del proyecto
+Configuración: archivos base y dependencias 
